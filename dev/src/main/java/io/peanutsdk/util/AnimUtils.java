@@ -88,7 +88,7 @@ public class AnimUtils {
 	 * and conditionally create the appropriate type, delegating the implementation.
 	 */
 	public static <T> Property<T, Integer> createIntProperty(final IntProp<T> impl) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+		/*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 			return new IntProperty<T>(impl.name) {
 				@Override
 				public Integer get(T object) {
@@ -112,7 +112,18 @@ public class AnimUtils {
 					impl.set(object, value);
 				}
 			};
-		}
+		}*/
+		return new Property<T, Integer>(Integer.class, impl.name) {
+				@Override
+				public Integer get(T object) {
+					return impl.get(object);
+				}
+				
+				@Override
+				public void set(T object, Integer value) {
+					impl.set(object, value);
+				}
+			};
 	}
 	
 	/**
@@ -136,7 +147,7 @@ public class AnimUtils {
 	 * and conditionally create the appropriate type, delegating the implementation.
 	 */
 	public static <T> Property<T, Float> createFloatProperty(final FloatProp<T> impl) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+		/*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 			return new FloatProperty<T>(impl.name) {
 				@Override
 				public Float get(T object) {
@@ -160,7 +171,18 @@ public class AnimUtils {
 					impl.set(object, value);
 				}
 			};
-		}
+		}*/
+		return new Property<T, Float>(Float.class, impl.name) {
+				@Override
+				public Float get(T object) {
+					return impl.get(object);
+				}
+				
+				@Override
+				public void set(T object, Float value) {
+					impl.set(object, value);
+				}
+			};
 	}
 	
 	/**
